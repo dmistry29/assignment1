@@ -1,0 +1,403 @@
+:root {
+    --ink: #183b39;
+    --muted: #657875;
+    --green: #16715b;
+    --line: #dce5df;
+    --paper: #f5f6ef
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Times New Roman', Times, serif
+}
+
+main {
+    max-width: 1440px;
+    margin: auto;
+    padding: 48px 40px
+}
+
+header {
+    max-width: 850px;
+    margin-bottom: 32px
+}
+
+.eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--green);
+    margin: 0 0 12px
+}
+
+h1,
+h2,
+strong {
+    font-family: 'Times New Roman', Times, serif
+}
+
+h1 {
+    font-size: clamp(32px, 4.2vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin: 0 0 18px
+}
+
+h1 span {
+    color: #c87843
+}
+
+.intro {
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 730px;
+    color: var(--muted)
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 165px auto;
+    gap: 24px;
+    align-items: center;
+    background: #e8eee4;
+    padding: 24px;
+    border: 1px solid #d7e1d4;
+    border-radius: 14px
+}
+
+label {
+    font-size: 12px;
+    font-weight: 600;
+    display: block
+}
+
+output {
+    float: right;
+    color: var(--green);
+    font-weight: 700
+}
+
+input[type=range] {
+    width: 100%;
+    accent-color: var(--green);
+    margin: 15px 0 0
+}
+
+select,
+button,
+input[type=date] {
+    font: inherit;
+    color: var(--ink);
+    border: 1px solid #cbd8cd;
+    background: #fff;
+    border-radius: 7px;
+    padding: 9px 12px
+}
+
+select {
+    width: 100%;
+    margin-top: 9px;
+    font-size: 13px
+}
+
+button {
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap
+}
+
+button:hover {
+    background: #eef4ec
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #d18a36;
+    outline-offset: 3px
+}
+
+#status {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 16px 0
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 28px 0;
+    gap: 28px
+}
+
+.stats>div {
+    border-left: 3px solid #bfd0bf;
+    padding: 4px 20px
+}
+
+.stats span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--muted)
+}
+
+.stats strong {
+    display: block;
+    font-size: 24px;
+    margin: 8px 0
+}
+
+.stats small {
+    color: var(--muted);
+    font-size: 12px
+}
+
+.panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 26px;
+    margin-bottom: 22px;
+    min-width: 0
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 16px
+}
+
+h2 {
+    font-size: 22px;
+    letter-spacing: -.6px;
+    margin: 0 0 8px
+}
+
+.panel p:not(.eyebrow) {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 18px
+}
+
+.date-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 4px 0 8px
+}
+
+.date-controls label {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.date-controls input {
+    font-size: 12px
+}
+
+.date-controls span {
+    font-size: 11px;
+    color: var(--muted)
+}
+
+.chart-scroll {
+    overflow-x: auto
+}
+
+#heatmap {
+    min-width: 850px
+}
+
+svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible
+}
+
+svg text {
+    font-family: 'Times New Roman', Times, serif;
+    fill: var(--muted);
+    font-size: 11px
+}
+
+.domain {
+    display: none
+}
+
+.tick line {
+    stroke: var(--line)
+}
+
+.station-label {
+    cursor: pointer;
+    font-size: 12px
+}
+
+.station-label.selected {
+    fill: var(--green);
+    font-weight: 700
+}
+
+.cell {
+    shape-rendering: crispEdges
+}
+
+.selection {
+    fill: #16715b;
+    fill-opacity: .18;
+    stroke: var(--green)
+}
+
+.handle {
+    fill: var(--green)
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 14px
+}
+
+.gradient {
+    width: 130px;
+    height: 9px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #506b97, #95bed0, #e8eac0, #edba78, #c36b52)
+}
+
+.legend-key {
+    width: 12px;
+    height: 12px;
+    margin-left: 12px
+}
+
+.comfortable {
+    background: #e8eac0;
+    border: 2px solid #154b3c
+}
+
+.missing {
+    background: #edf0ee
+}
+
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 22px
+}
+
+.bar {
+    cursor: pointer
+}
+
+.chart-note {
+    font-size: 11px !important;
+    margin-top: 12px !important
+}
+
+footer {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+    max-width: 1050px
+}
+
+footer strong {
+    color: var(--ink)
+}
+
+summary {
+    cursor: pointer;
+    margin-top: 10px;
+    color: var(--green)
+}
+
+#tooltip {
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    background: #173c37;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.8;
+    box-shadow: 0 5px 25px #173c3726;
+    max-width: 260px
+}
+
+#tooltip strong {
+    color: #fff
+}
+
+#tooltip .tip-status {
+    color: #d4e8b6
+}
+
+.empty-note {
+    fill: var(--muted);
+    font-size: 12px
+}
+
+@media(max-width:1000px) {
+    .controls {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .bottom-grid {
+        grid-template-columns: 1fr
+    }
+
+    main {
+        padding: 30px 20px
+    }
+}
+
+@media(max-width:600px) {
+    .controls {
+        grid-template-columns: 1fr;
+        gap: 15px
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 18px
+    }
+
+    .panel {
+        padding: 18px
+    }
+
+    .date-controls {
+        flex-wrap: wrap
+    }
+
+    .date-controls span {
+        display: none
+    }
+
+    .panel-heading {
+        flex-wrap: wrap
+    }
+
+    .stats strong {
+        font-size: 21px
+    }
+}

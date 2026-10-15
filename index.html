@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chasing Comfortable Weather</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://d3js.org/d3.v7.min.js"></script>
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">A WEATHER EXPLORER · JAN–SEP 2017</p>
+    <h1>Chasing comfortable weather<span>.</span></h1>
+    <p class="intro">
+        This can be the introduction part where we talk about the visualization
+    </p>
+  </header>
+  <section class="controls" aria-label="Comfort preferences">
+    <div><label for="min-temp">Daily high, at least <output id="min-label">65°F</output></label><input id="min-temp" type="range" min="30" max="100" value="65" step="1"></div>
+    <div><label for="max-temp">Daily high, at most <output id="max-label">80°F</output></label><input id="max-temp" type="range" min="30" max="110" value="80" step="1"></div>
+    <div><label for="rain">Daily rain, at most <output id="rain-label">0.05 in</output></label><input id="rain" type="range" min="0" max="1" value="0.05" step="0.01"></div>
+    <div><label for="region">Compare places</label><select id="region"><option value="All">All 12 stations</option><option>West</option><option>Central</option><option>East</option></select></div>
+    <button id="reset" type="button">Reset explorer ↺</button>
+  </section>
+  <p id="status" role="status">Loading daily observations…</p>
+  <div id="explorer" hidden>
+    <section class="stats" aria-label="Selection summary"><div><span>YOUR WINDOW</span><strong id="window-stat"></strong><small id="days-stat"></small></div><div><span>BEST MATCH IN VIEW</span><strong id="best-stat"></strong><small id="best-note"></small></div><div><span>LONGEST COMFORTABLE STREAK</span><strong id="streak-stat"></strong><small id="streak-note"></small></div></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">01 / EXPLORE THE CALENDAR</p><h2>Where do the good days land?</h2><p>Drag the date strip to compare a period. Outlined cells meet your preferences.</p></div><button id="full-range" type="button">Show all dates</button></div>
+      <div class="date-controls"><label>From <input id="start-date" type="date" min="2017-01-01" max="2017-09-21"></label><label>To <input id="end-date" type="date" min="2017-01-01" max="2017-09-21"></label><span>Or brush the strip below ↓</span></div>
+      <div class="chart-scroll"><div id="heatmap"></div></div>
+      <div class="legend"><span>Daily high (°F)</span><span class="gradient"></span><span>0 · 30 · 60 · 90 · 120</span><span class="legend-key comfortable"></span><span>Comfortable</span><span class="legend-key missing"></span><span>Missing / excluded</span></div>
+    </section>
+    <div class="bottom-grid"><section class="panel"><p class="eyebrow">02 / COMPARE YOUR OPTIONS</p><h2>A good day, how often?</h2><p>Share of valid days meeting both preferences. Click a bar or station name to inspect it.</p><div id="ranking"></div></section>
+    <section class="panel"><p class="eyebrow">03 / TAKE A CLOSER LOOK</p><h2 id="detail-title"></h2><p id="detail-subtitle"></p><div id="detail"></div><p class="chart-note">Daily high temperature. The shaded band is your temperature preference; green dots also meet your rain limit. Gaps indicate missing readings.</p></section></div>
+    <footer><strong>About this view.</strong> Twelve selected airport stations, January 1–September 21, 2017. “Comfortable” means the daily high is within your inclusive range and precipitation is at or below your limit. Percentages exclude days missing either measurement; missing days break streaks. This is a partial-year weather comparison, not a long-term climate ranking.<details><summary>Data and methods</summary><p>Source: the supplied weather.csv. Temperature is interpreted as °F and precipitation as inches based on the supplied values; confirm these units with the original dataset documentation. Temperature readings outside −80 to 140°F, negative precipitation, and high temperatures below the recorded low are excluded. These are screening rules, not a full quality assessment. Stations are identified by name, state, latitude, and longitude. The charts use TMAX and PRCP; average temperature is not substituted for missing highs.</p></details></footer>
+  </div>
+</main>
+<div id="tooltip" role="tooltip" hidden></div>
+</body>
+</html>
